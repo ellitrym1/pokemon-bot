@@ -1,6 +1,7 @@
 const dotenv = require("dotenv")
 dotenv.config()
 const fetch = require("node-fetch")
+const _ = require("lodash")
 
 const discord = require("discord.js")
 const client = new discord.Client()
@@ -31,7 +32,7 @@ client.on('message', (msg) => {
                         getPokemon(getRandom(1, 898))
                             .then(res => {
                                 msgEmbed
-                                    .setTitle(res.name)
+                                    .setTitle(_.capitalize(res.name))
                                     .setImage(res.sprites.front_default)
                                 // msg.channel.send(res.name, { files: [res.sprites.front_default]})
                                 msg.channel.send(msgEmbed)
@@ -41,7 +42,7 @@ client.on('message', (msg) => {
                         getPokemon(args[1])
                             .then(res => {
                                 msgEmbed
-                                    .setTitle(res.name)
+                                    .setTitle(_.capitalize(res.name))
                                     .setImage(res.sprites.front_default)
                                 // msg.channel.send(res.name, { files: [res.sprites.front_default]})
                                 msg.channel.send(msgEmbed)
@@ -79,12 +80,12 @@ client.on('message', (msg) => {
                     getPokemon(getRandom(1, 898))
                         .then(res => {
                             msgEmbed
-                                .setTitle(res.name)
+                                .setTitle(_.capitalize(res.name))
                                 .setThumbnail(res.sprites.front_default)
                                 .addFields(
                                     {
                                         name: 'Name',
-                                        value: `${res.name}`
+                                        value: `${_.capitalize(res.name)}`
                                     },
                                     {
                                         name: 'Height',
@@ -110,12 +111,12 @@ client.on('message', (msg) => {
                     getPokemon(args[1])
                         .then(res => {
                             msgEmbed
-                                .setTitle(res.name)
+                                .setTitle(_.capitalize(res.name))
                                 .setThumbnail(res.sprites.front_default)
                                 .addFields(
                                     {
                                         name: 'Name',
-                                        value: `${res.name}`
+                                        value: `${_.capitalize(res.name)}`
                                     },
                                     {
                                         name: 'Height',
