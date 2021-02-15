@@ -98,8 +98,8 @@ client.on('message', (msg) => {
                                     },
                                     {
                                         name: 'Type',
-                                        value: `${res.types.map(type => {
-                                            return type + ' ' 
+                                        value: `${res.types.map(e => {
+                                            return e.type.name + ' ' 
                                         })}`
                                     }
                                 )
@@ -129,8 +129,8 @@ client.on('message', (msg) => {
                                     },
                                     {
                                         name: 'Type',
-                                        value: `${res.types.map(type => {
-                                            return type + ' ' 
+                                        value: `${res.types.map(e => {
+                                            return e.type.name + ' ' 
                                         })}`
                                     }
                                 )
