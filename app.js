@@ -126,6 +126,12 @@ client.on('message', (msg) => {
                                         value: `${_.capitalize(res.name)}`
                                     },
                                     {
+                                        name: 'Type',
+                                        value: `${res.types.map(e => {
+                                            return e.type.name + ' ' 
+                                        })}`
+                                    },
+                                    {
                                         name: 'Height',
                                         value: `${res.height}`,
                                         inline: true
@@ -135,12 +141,14 @@ client.on('message', (msg) => {
                                         value: `${res.weight}`,
                                         inline: true
                                     },
-                                    {
-                                        name: 'Type',
-                                        value: `${res.types.map(e => {
-                                            return e.type.name + ' ' 
-                                        })}`
-                                    }
+                                    res.stats.map(e => {
+                                        return {
+                                            name: `${_.capitalize(e.stat.name)}`,
+                                            value: `${e.base_stat}`,
+                                            inline: true
+                                        }
+                                    })
+                                    
                                 )
                                 msg.channel.send(msgEmbed)
                         })
