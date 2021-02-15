@@ -33,13 +33,6 @@ client.on('message', (msg) => {
                                 msgEmbed
                                     .setTitle(res.name)
                                     .setImage(res.sprites.front_default)
-                                    // .image(
-                                    //     {
-                                    //         url: res.sprites.front_default,
-                                    //         height: 200,
-                                    //         width: 200
-                                    //     }
-                                    // )
                                 // msg.channel.send(res.name, { files: [res.sprites.front_default]})
                                 msg.channel.send(msgEmbed)
                             })
@@ -73,7 +66,6 @@ client.on('message', (msg) => {
                 }
             }
             else{
-                // msg.channel.send("Syntax: /poke pic {pokemonId / pokemonName}")
                 msgEmbed
                     .setTitle("Oops!")
                     .setDescription("Syntax: /poke pic {pokemonId / pokemonName}")
@@ -81,7 +73,75 @@ client.on('message', (msg) => {
             }
         }
         else if(args[0] === 'info'){
-
+            pokeIndex = args[1]
+            if(pokeIndex != null){
+                if(pokeIndex === 'random'){
+                    getPokemon(getRandom(1, 898))
+                        .then(res => {
+                            msgEmbed
+                                .setTitle(res.name)
+                                .setThumbnail(res.sprites.front_default)
+                                .addFields(
+                                    {
+                                        name: 'Name',
+                                        value: `${res.name}`
+                                    },
+                                    {
+                                        name: 'Height',
+                                        value: `${res.height}`,
+                                        inline: true
+                                    },
+                                    {
+                                        name: 'Weight',
+                                        value: `${res.weight}`,
+                                        inline: true
+                                    },
+                                    {
+                                        name: 'Type',
+                                        value: `${res.types.map(type => {
+                                            return type + ' ' 
+                                        })}`
+                                    }
+                                )
+                        })
+                }
+                else{
+                    getPokemon(args[1])
+                        .then(res => {
+                            msgEmbed
+                                .setTitle(res.name)
+                                .setThumbnail(res.sprites.front_default)
+                                .addFields(
+                                    {
+                                        name: 'Name',
+                                        value: `${res.name}`
+                                    },
+                                    {
+                                        name: 'Height',
+                                        value: `${res.height}`,
+                                        inline: true
+                                    },
+                                    {
+                                        name: 'Weight',
+                                        value: `${res.weight}`,
+                                        inline: true
+                                    },
+                                    {
+                                        name: 'Type',
+                                        value: `${res.types.map(type => {
+                                            return type + ' ' 
+                                        })}`
+                                    }
+                                )
+                        })
+                }
+            }
+            else{
+                msgEmbed
+                    .setTitle("Oops!")
+                    .setDescription("Syntax: /poke info {pokemonId / pokemonName}")
+                    msg.channel.send(msgEmbed)
+            }
         }
         else if(args[0] === 'help'){
             msgEmbed
