@@ -33,7 +33,8 @@ client.on('message', (msg) => {
                             .then(res => {
                                 msgEmbed
                                     .setTitle(_.capitalize(res.name))
-                                    .setImage(res.sprites.front_default)
+                                    .setColor('#FF0000')
+                                    .setImage(`https://pokeres.bastionbot.org/images/pokemon/${res.id}.png`)
                                 // msg.channel.send(res.name, { files: [res.sprites.front_default]})
                                 msg.channel.send(msgEmbed)
                             })
@@ -43,7 +44,8 @@ client.on('message', (msg) => {
                             .then(res => {
                                 msgEmbed
                                     .setTitle(_.capitalize(res.name))
-                                    .setImage(res.sprites.front_default)
+                                    .setColor('#FF0000')
+                                    .setImage(`https://pokeres.bastionbot.org/images/pokemon/${res.id}.png`)
                                 // msg.channel.send(res.name, { files: [res.sprites.front_default]})
                                 msg.channel.send(msgEmbed)
                             })
@@ -51,6 +53,7 @@ client.on('message', (msg) => {
                                 console.log(err)
                                 msgEmbed
                                     .setTitle("Oops!")
+                                    .setColor('#FF0000')
                                     .setDescription("Pokemon doesn't exist!")
                                 // msg.channel.send(res.name, { files: [res.sprites.front_default]})
                                 msg.channel.send(msgEmbed)
@@ -62,6 +65,7 @@ client.on('message', (msg) => {
                     // msg.channel.send("pokemonId cannot be 0 / null")
                     msgEmbed
                         .setTitle("Oops!")
+                        .setColor('#FF0000')
                         .setDescription("pokemonId cannot be 0 / null")
                         msg.channel.send(msgEmbed)
                 }
@@ -69,6 +73,7 @@ client.on('message', (msg) => {
             else{
                 msgEmbed
                     .setTitle("Oops!")
+                    .setColor('#FF0000')
                     .setDescription("Syntax: /poke pic {pokemonId / pokemonName}")
                     msg.channel.send(msgEmbed)
             }
@@ -81,7 +86,8 @@ client.on('message', (msg) => {
                         .then(res => {
                             msgEmbed
                                 .setTitle(_.capitalize(res.name))
-                                .setThumbnail(res.sprites.front_default)
+                                .setColor('#FF0000')
+                                .setThumbnail(`https://pokeres.bastionbot.org/images/pokemon/${res.id}.png`)
                                 .addFields(
                                     {
                                         name: 'Name',
@@ -112,7 +118,8 @@ client.on('message', (msg) => {
                         .then(res => {
                             msgEmbed
                                 .setTitle(_.capitalize(res.name))
-                                .setThumbnail(res.sprites.front_default)
+                                .setColor('#FF0000')
+                                .setThumbnail(`https://pokeres.bastionbot.org/images/pokemon/${res.id}.png`)
                                 .addFields(
                                     {
                                         name: 'Name',
@@ -142,6 +149,7 @@ client.on('message', (msg) => {
             else{
                 msgEmbed
                     .setTitle("Oops!")
+                    .setColor('#FF0000')
                     .setDescription("Syntax: /poke info {pokemonId / pokemonName}")
                     msg.channel.send(msgEmbed)
             }
@@ -149,6 +157,7 @@ client.on('message', (msg) => {
         else if(args[0] === 'help'){
             msgEmbed
                 .setTitle("Help")
+                .setColor('#FF0000')
                 .setThumbnail("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg12.deviantart.net%2F2e51%2Fi%2F2016%2F158%2Fe%2F0%2Fflat_pokeball_by_himitsunochikara-d6v7eyk.png&f=1&nofb=1")
                 .addFields(
                     {
@@ -166,6 +175,7 @@ client.on('message', (msg) => {
             // msg.channel.send("For available uses, /poke help")
             msgEmbed
                 .setTitle("Oops!")
+                .setColor('#FF0000')
                 .setDescription("For available uses, /poke help")
                 msg.channel.send(msgEmbed)
         }
