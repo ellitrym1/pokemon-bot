@@ -103,6 +103,7 @@ client.on('message', (msg) => {
                                         })}`
                                     }
                                 )
+                                msg.channel.send(msgEmbed)
                         })
                 }
                 else{
@@ -133,6 +134,7 @@ client.on('message', (msg) => {
                                         })}`
                                     }
                                 )
+                                msg.channel.send(msgEmbed)
                         })
                 }
             }
